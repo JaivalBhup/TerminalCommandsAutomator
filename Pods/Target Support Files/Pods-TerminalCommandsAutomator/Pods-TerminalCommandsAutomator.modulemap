@@ -1,0 +1,6 @@
+framework module Pods_TerminalCommandsAutomator {
+  umbrella header "Pods-TerminalCommandsAutomator-umbrella.h"
+
+  export *
+  module * { export * }
+}
