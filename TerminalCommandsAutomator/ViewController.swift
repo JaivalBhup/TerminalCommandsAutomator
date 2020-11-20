@@ -15,9 +15,6 @@ class ViewController: NSViewController{
     var rows:Results<Row>?
     var latestR : Int?
     var latestC : Int?
-    
-    //Notifications
-    let nc = NotificationCenter.default
     @IBOutlet weak var segmentedControl: NSSegmentedCell!
     @IBOutlet weak var tableView: NSTableView!
     
@@ -26,8 +23,6 @@ class ViewController: NSViewController{
         tableView.delegate = self
         tableView.dataSource = self
         load()
-        // Observer for notifications
-        nc.addObserver(self, selector: #selector(changeTableView), name: NSNotification.Name(rawValue: "ChangeTableView"), object: nil)
         tableView.target = self
         // Double click listener
         tableView.action = #selector(onItemClicked)
@@ -77,7 +72,6 @@ class ViewController: NSViewController{
             print("\(error)")
         }
         tableView.reloadData()
-        //performSegue(withIdentifier: "goToAdd", sender: self)
     }
     //Delete row
     func delete(){
