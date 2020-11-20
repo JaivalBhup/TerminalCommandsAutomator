@@ -13,6 +13,9 @@ class ViewController: NSViewController{
     // Realm object
     let realm = try! Realm()
     var rows:Results<Row>?
+    var latestR : Int?
+    var latestC : Int?
+    
     //Notifications
     let nc = NotificationCenter.default
     @IBOutlet weak var segmentedControl: NSSegmentedCell!
@@ -27,10 +30,12 @@ class ViewController: NSViewController{
         nc.addObserver(self, selector: #selector(changeTableView), name: NSNotification.Name(rawValue: "ChangeTableView"), object: nil)
         tableView.target = self
         // Double click listener
-        tableView.doubleAction = #selector(tableViewDoubleClick(_:))
-        // Do any additional setup after loading the view.
+        tableView.action = #selector(onItemClicked)
     }
-    
+    @objc private func onItemClicked() {
+        latestR = tableView.clickedRow
+        latestC = tableView.clickedColumn
+    }
     override func viewWillAppear() {
         load()
     }
@@ -42,11 +47,6 @@ class ViewController: NSViewController{
     // Notification resopnder
     @objc func changeTableView(notification:NSNotification) {
         tableView.reloadData()
-    }
-    // Double click responder
-    @objc func tableViewDoubleClick(_ sender:AnyObject) {
-        print(tableView.selectedRow)
-        performSegue(withIdentifier: "goToEdit", sender: self)
     }
     
     // Segment controller
@@ -66,7 +66,18 @@ class ViewController: NSViewController{
     }
     // Add row
     func add(){
-        performSegue(withIdentifier: "goToAdd", sender: self)
+        do{
+            let r = Row()
+            r.computer = ""
+            r.command = ""
+            try realm.write({
+                realm.add(r)
+            })
+        }catch{
+            print("\(error)")
+        }
+        tableView.reloadData()
+        //performSegue(withIdentifier: "goToAdd", sender: self)
     }
     //Delete row
     func delete(){
@@ -89,14 +100,7 @@ class ViewController: NSViewController{
         rows = realm.objects(Row.self)
         tableView.reloadData()
     }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToEdit"{
-            if let destination = segue.destinationController as? EditRow{
-                destination.r = rows?[tableView.selectedRow]
-            }
-        }
-    }
+
     
 
 }
@@ -112,15 +116,29 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate{
             if tableColumn?.identifier == NSUserInterfaceItemIdentifier(rawValue: "Computer") {
          
                 let cellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "computerCell")
-                guard let cellView = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? NSTableCellView else { return nil }
-                cellView.textField?.stringValue = r.computer
+                guard let cellView = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? TextFieldCell else { return nil }
+                cellView.tf.delegate = self
+                if r.computer == ""{
+                    cellView.tf.drawsBackground = true
+                }
+                else{
+                    cellView.tf.drawsBackground = false
+                }
+                cellView.tf.stringValue = r.computer
                 return cellView
          
             } else if tableColumn?.identifier == NSUserInterfaceItemIdentifier(rawValue: "Command") {
          
                 let cellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "commandCell")
-                guard let cellView = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? NSTableCellView else { return nil }
-                cellView.textField?.stringValue = r.command
+                guard let cellView = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? TextFieldCell else { return nil }
+                cellView.tf.delegate = self
+                if r.command == ""{
+                    cellView.tf.drawsBackground = true
+                }
+                else{
+                    cellView.tf.drawsBackground = false
+                }
+                cellView.tf.stringValue = r.command
                 return cellView
          
          
@@ -175,4 +193,35 @@ extension ViewController: cellRowNum{
     }
     
     
+}
+
+extension ViewController:NSTextFieldDelegate{
+    func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        if let r = latestR, let c = latestC{
+            if let row = rows?[r]{
+                if c == 0{
+                    do{
+
+                        try realm.write({
+                            row.computer = fieldEditor.string
+                            })
+                    }catch{
+                        print("\(error)")
+                    }
+                }
+                else if c == 1{
+                    do{
+
+                        try realm.write({
+                            row.command = fieldEditor.string
+                            })
+                    }catch{
+                        print("\(error)")
+                    }
+                }
+            }
+        }
+        tableView.reloadData()
+        return true
+    }
 }

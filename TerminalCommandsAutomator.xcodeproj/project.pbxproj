@@ -13,9 +13,8 @@
 		B46C8C7E25659FB4007BDDF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46C8C7D25659FB4007BDDF6 /* Assets.xcassets */; };
 		B46C8C8125659FB4007BDDF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46C8C7F25659FB4007BDDF6 /* Main.storyboard */; };
 		B4A399402566EAF80072309D /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3993F2566EAF80072309D /* Row.swift */; };
-		B4D5BC1D2567B02D001B2D52 /* EditRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5BC1B2567B02D001B2D52 /* EditRow.swift */; };
+		B4D5BC2225682766001B2D52 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5BC2125682766001B2D52 /* TextFieldCell.swift */; };
 		B4F69047256642EA0035AEDD /* NewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F69046256642EA0035AEDD /* NewTableCell.swift */; };
-		B4F6904B25664FED0035AEDD /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F6904A25664FED0035AEDD /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +28,8 @@
 		B46C8C8225659FB4007BDDF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B46C8C8325659FB4007BDDF6 /* TerminalCommandsAutomator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TerminalCommandsAutomator.entitlements; sourceTree = "<group>"; };
 		B4A3993F2566EAF80072309D /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
-		B4D5BC1B2567B02D001B2D52 /* EditRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRow.swift; sourceTree = "<group>"; };
+		B4D5BC2125682766001B2D52 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		B4F69046256642EA0035AEDD /* NewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableCell.swift; sourceTree = "<group>"; };
-		B4F6904A25664FED0035AEDD /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		C1022DF5EAEF010A4953A963 /* Pods_TerminalCommandsAutomator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TerminalCommandsAutomator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,10 +78,9 @@
 				B46C8C7925659FB3007BDDF6 /* AppDelegate.swift */,
 				B46C8C7B25659FB3007BDDF6 /* ViewController.swift */,
 				B4A3993F2566EAF80072309D /* Row.swift */,
-				B4F6904A25664FED0035AEDD /* AddViewController.swift */,
 				B46C8C7D25659FB4007BDDF6 /* Assets.xcassets */,
 				B46C8C7F25659FB4007BDDF6 /* Main.storyboard */,
-				B4D5BC1B2567B02D001B2D52 /* EditRow.swift */,
+				B4D5BC2125682766001B2D52 /* TextFieldCell.swift */,
 				B4F69046256642EA0035AEDD /* NewTableCell.swift */,
 				B46C8C8225659FB4007BDDF6 /* Info.plist */,
 				B46C8C8325659FB4007BDDF6 /* TerminalCommandsAutomator.entitlements */,
@@ -214,9 +211,8 @@
 			files = (
 				B46C8C7C25659FB3007BDDF6 /* ViewController.swift in Sources */,
 				B4F69047256642EA0035AEDD /* NewTableCell.swift in Sources */,
-				B4F6904B25664FED0035AEDD /* AddViewController.swift in Sources */,
 				B4A399402566EAF80072309D /* Row.swift in Sources */,
-				B4D5BC1D2567B02D001B2D52 /* EditRow.swift in Sources */,
+				B4D5BC2225682766001B2D52 /* TextFieldCell.swift in Sources */,
 				B46C8C7A25659FB3007BDDF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
