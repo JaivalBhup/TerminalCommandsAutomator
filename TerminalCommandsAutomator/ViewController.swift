@@ -175,9 +175,9 @@ extension ViewController: cellRowNum{
         if let r = rows?[index]{
             if r.command != "" && r.password != "" && r.command != ""{
                 let cmdRes = shell(r.command)
-                //let passRes = shell(r.password)
+                let passRes = shell(r.password)
                 print("Command Result - \(cmdRes)")
-                //print("Password Result - \(passRes)")
+                print("Password Result - \(passRes)")
             }
         }
     }
