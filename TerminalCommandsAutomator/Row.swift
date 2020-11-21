@@ -11,4 +11,5 @@ import RealmSwift
 class Row:Object{
     @objc dynamic var computer:String = ""
     @objc dynamic var command:String = ""
+    @objc dynamic var password:String = ""
 }

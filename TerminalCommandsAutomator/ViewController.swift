@@ -65,6 +65,7 @@ class ViewController: NSViewController{
             let r = Row()
             r.computer = ""
             r.command = ""
+            r.password = ""
             try realm.write({
                 realm.add(r)
             })
@@ -142,13 +143,28 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate{
                 cellView.delegate = self
                 cellView.index = row
                 return cellView
+            }else if tableColumn?.identifier == NSUserInterfaceItemIdentifier(rawValue: "Password") {
+                
+                let cellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "passwordCell")
+                guard let cellView = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? TextFieldCell else { return nil }
+                cellView.tf.delegate = self
+                if r.password == ""{
+                    cellView.tf.drawsBackground = true
+                }
+                else{
+                    cellView.tf.drawsBackground = false
+                }
+                cellView.tf.stringValue = r.password
+                return cellView
+         
+         
             }
         }
             return nil
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-            return 23
+            return 20
         }
     
 }
@@ -156,35 +172,30 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate{
 //MARK:- Custom cell to listen to button clicks
 extension ViewController: cellRowNum{
     func onClick(index: Int) {
-        let _ = run("cd")
+        if let r = rows?[index]{
+            if r.command != "" && r.password != "" && r.command != ""{
+                let cmdRes = shell(r.command)
+                let passRes = shell(r.password)
+                print("Command Result - \(cmdRes)")
+                print("Password Result - \(passRes)")
+            }
+        }
     }
-    @discardableResult func run(_ cmd: String) -> String? {
-//        let pipe = Pipe()
-//        let process = Process()
-//        process.launchPath = "/bin/zsh"
-//        process.arguments = ["-c", String(format:"%@", cmd)]
-//        process.standardOutput = pipe
-//        let fileHandle = pipe.fileHandleForReading
-//        process.launch()
-//        return String(data: fileHandle.readDataToEndOfFile(), encoding: .utf8)
-        
-        
-//        let task = Process()
-//
-//        task.launchPath = "/bin/zsh"
-//        task.arguments = ["-c", cmd]
-//
-//        let pipe = Pipe()
-//        task.standardOutput = pipe
-//        task.standardError = pipe
-//        task.launch()
-//
-//        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-//        let output = String(data: data, encoding: .utf8)
-//        task.waitUntilExit()
-//        return output
-        return nil
+    func shell(_ command: String) -> String {
+        let task = Process()
+        let pipe = Pipe()
+
+        task.standardOutput = pipe
+        task.arguments = ["-c", command]
+        task.launchPath = "/bin/bash"
+        task.launch()
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)!
+
+        return output
     }
+    
     
     
 }
@@ -208,6 +219,16 @@ extension ViewController:NSTextFieldDelegate{
 
                         try realm.write({
                             row.command = fieldEditor.string
+                            })
+                    }catch{
+                        print("\(error)")
+                    }
+                }
+                else if c == 2{
+                    do{
+
+                        try realm.write({
+                            row.password = fieldEditor.string
                             })
                     }catch{
                         print("\(error)")
