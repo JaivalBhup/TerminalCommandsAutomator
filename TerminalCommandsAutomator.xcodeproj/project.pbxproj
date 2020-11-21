@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5CAF7DB38229EAEAE7406621 /* Pods_TerminalCommandsAutomator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1022DF5EAEF010A4953A963 /* Pods_TerminalCommandsAutomator.framework */; };
-		B41FAA30256900EF00CE9A6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B41FAA2F256900EF00CE9A6C /* Assets.xcassets */; };
+		B4229C58256938E900866F2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4229C57256938E800866F2A /* Assets.xcassets */; };
 		B46C8C7A25659FB3007BDDF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46C8C7925659FB3007BDDF6 /* AppDelegate.swift */; };
 		B46C8C7C25659FB3007BDDF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46C8C7B25659FB3007BDDF6 /* ViewController.swift */; };
 		B46C8C8125659FB4007BDDF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46C8C7F25659FB4007BDDF6 /* Main.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		1F180560DB7310192A6D1B36 /* Pods-TerminalCommandsAutomator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerminalCommandsAutomator.release.xcconfig"; path = "Target Support Files/Pods-TerminalCommandsAutomator/Pods-TerminalCommandsAutomator.release.xcconfig"; sourceTree = "<group>"; };
 		535B266B98CEE81ED31C9F46 /* Pods-TerminalCommandsAutomator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TerminalCommandsAutomator.debug.xcconfig"; path = "Target Support Files/Pods-TerminalCommandsAutomator/Pods-TerminalCommandsAutomator.debug.xcconfig"; sourceTree = "<group>"; };
-		B41FAA2F256900EF00CE9A6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
+		B4229C57256938E800866F2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B46C8C7625659FB3007BDDF6 /* TerminalCommandsAutomator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerminalCommandsAutomator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46C8C7925659FB3007BDDF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46C8C7B25659FB3007BDDF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 				B46C8C7B25659FB3007BDDF6 /* ViewController.swift */,
 				B4A3993F2566EAF80072309D /* Row.swift */,
 				B46C8C7F25659FB4007BDDF6 /* Main.storyboard */,
-				B41FAA2F256900EF00CE9A6C /* Assets.xcassets */,
+				B4229C57256938E800866F2A /* Assets.xcassets */,
 				B4D5BC2125682766001B2D52 /* TextFieldCell.swift */,
 				B4F69046256642EA0035AEDD /* NewTableCell.swift */,
 				B46C8C8225659FB4007BDDF6 /* Info.plist */,
@@ -183,7 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B41FAA30256900EF00CE9A6C /* Assets.xcassets in Resources */,
+				B4229C58256938E900866F2A /* Assets.xcassets in Resources */,
 				B46C8C8125659FB4007BDDF6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
