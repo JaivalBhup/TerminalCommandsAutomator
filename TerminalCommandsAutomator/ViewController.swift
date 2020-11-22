@@ -7,6 +7,7 @@
 
 import Cocoa
 import RealmSwift
+import ShellOut
 
 class ViewController: NSViewController{
 
@@ -39,11 +40,6 @@ class ViewController: NSViewController{
         // Update the view, if already loaded.
         }
     }
-    // Notification resopnder
-    @objc func changeTableView(notification:NSNotification) {
-        tableView.reloadData()
-    }
-    
     // Segment controller
     @IBAction func addOrRemove(_ sender: NSSegmentedCell) {
         switch self.segmentedControl.selectedSegment{
@@ -171,33 +167,24 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate{
 
 //MARK:- Custom cell to listen to button clicks
 extension ViewController: cellRowNum{
+    func  convertIntoStr(subStr s : ArraySlice<String.SubSequence>) -> [String] {
+        var ns:[String] = []
+        for i in s{
+            ns.append(String(i))
+        }
+        return ns
+    }
     func onClick(index: Int) {
         if let r = rows?[index]{
             if r.command != "" && r.password != "" && r.command != ""{
-                let cmdRes = shell(r.command)
-                let passRes = shell(r.password)
-                print("Command Result - \(cmdRes)")
-                print("Password Result - \(passRes)")
+                do{
+                    try shellOut(to: [r.command, r.password])
+                }catch{
+                    print(error)
+                }
             }
         }
     }
-    func shell(_ command: String) -> String {
-        let task = Process()
-        let pipe = Pipe()
-
-        task.standardOutput = pipe
-        task.arguments = ["-c", command]
-        task.launchPath = "/bin/bash"
-        task.launch()
-
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: .utf8)!
-
-        return output
-    }
-    
-    
-    
 }
 
 extension ViewController:NSTextFieldDelegate{

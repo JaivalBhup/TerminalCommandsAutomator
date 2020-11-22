@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5CAF7DB38229EAEAE7406621 /* Pods_TerminalCommandsAutomator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1022DF5EAEF010A4953A963 /* Pods_TerminalCommandsAutomator.framework */; };
 		B4229C58256938E900866F2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4229C57256938E800866F2A /* Assets.xcassets */; };
+		B448C13C256A37BE00412109 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = B448C13B256A37BE00412109 /* ShellOut */; };
 		B46C8C7A25659FB3007BDDF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46C8C7925659FB3007BDDF6 /* AppDelegate.swift */; };
 		B46C8C7C25659FB3007BDDF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46C8C7B25659FB3007BDDF6 /* ViewController.swift */; };
 		B46C8C8125659FB4007BDDF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46C8C7F25659FB4007BDDF6 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 			files = (
 				5CAF7DB38229EAEAE7406621 /* Pods_TerminalCommandsAutomator.framework in Frameworks */,
 				B4D5BC3025686212001B2D52 /* Pods_TerminalCommandsAutomator.framework in Frameworks */,
+				B448C13C256A37BE00412109 /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +141,7 @@
 			);
 			name = TerminalCommandsAutomator;
 			packageProductDependencies = (
+				B448C13B256A37BE00412109 /* ShellOut */,
 			);
 			productName = TerminalCommandsAutomator;
 			productReference = B46C8C7625659FB3007BDDF6 /* TerminalCommandsAutomator.app */;
@@ -168,6 +171,7 @@
 			);
 			mainGroup = B46C8C6D25659FB3007BDDF6;
 			packageReferences = (
+				B448C13A256A37BE00412109 /* XCRemoteSwiftPackageReference "ShellOut" */,
 			);
 			productRefGroup = B46C8C7725659FB3007BDDF6 /* Products */;
 			projectDirPath = "";
@@ -440,6 +444,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B448C13A256A37BE00412109 /* XCRemoteSwiftPackageReference "ShellOut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/ShellOut.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B448C13B256A37BE00412109 /* ShellOut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B448C13A256A37BE00412109 /* XCRemoteSwiftPackageReference "ShellOut" */;
+			productName = ShellOut;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B46C8C6E25659FB3007BDDF6 /* Project object */;
 }
